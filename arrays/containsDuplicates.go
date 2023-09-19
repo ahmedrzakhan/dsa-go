@@ -49,3 +49,6 @@ func containsDuplicates(nums []int) bool {
 func main() {
 	fmt.Println(containsDuplicates([]int{1, 2, 3, 1}))
 }
+
+// Approach 2 - SORT and iterate if next elem is same it contains duplicate
+// TC - O(N) SC - O(1)

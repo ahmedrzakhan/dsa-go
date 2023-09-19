@@ -55,3 +55,6 @@ func main() {
 	fmt.Println(isAnagram(s1, t1)) // true
 	fmt.Println(isAnagram(s2, t2)) // false
 }
+
+// Approach 2 - SORT and iterate on both (all have to be same until end of loop for it to be anagram)
+// TC - O(N) SC - O(1)

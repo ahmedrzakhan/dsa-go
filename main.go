@@ -3,49 +3,55 @@ package main
 import "fmt"
 
 /**
-Given an integer array nums, return true if any value appears at least twice in the array,
-and return false if every element is distinct.
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
 Example 1:
 
-Input: nums = [1,2,3,1]
+Input: s = "anagram", t = "nagaram"
 Output: true
 Example 2:
 
-Input: nums = [1,2,3,4]
+Input: s = "rat", t = "car"
 Output: false
-Example 3:
-
-Input: nums = [1,1,1,3,3,4,3,2,4,2]
-Output: true
 
 Constraints:
 
-1 <= nums.length <= 105
--109 <= nums[i] <= 109
+1 <= s.length, t.length <= 5 * 104
+s and t consist of lowercase English letters.
 */
 
 /*
 TC - O(N)
 SC - O(N)
 */
-func containsDuplicates(nums []int) bool {
-	if len(nums) <= 1 {
+
+func isAnagram(s string, t string) bool {
+	if len(s) != len(t) {
 		return false
 	}
 
-	seenNums := make(map[int]struct{})
+	var freq [26]int
 
-	for _, num := range nums {
-		if _, ok := seenNums[num]; ok {
-			return true
-		}
-
-		seenNums[num] = struct{}{}
+	for idx := 0; idx < len(s); idx++ {
+		freq[s[idx]-'a']++
+		freq[t[idx]-'a']--
 	}
-	return false
+
+	for idx := 0; idx < len(freq); idx++ {
+		if freq[idx] != 0 {
+			return false
+		}
+	}
+
+	return true
 }
 
 func main() {
-	fmt.Println(containsDuplicates([]int{1, 2, 3, 1}))
+	s1, t1 := "anagram", "nagaram"
+	s2, t2 := "rat", "car"
+
+	fmt.Println(isAnagram(s1, t1)) // true
+	fmt.Println(isAnagram(s2, t2)) // false
 }
