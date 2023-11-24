@@ -85,7 +85,7 @@ func (bf BikeFactory) CreateVehicle() Vehicle {
 }
 
 // main function
-func main() {
+func mainFactory() {
 	var carFactory VehicleFactory = CarFactory{}
 	var truckFactory VehicleFactory = TruckFactory{}
 	var bikeFactory VehicleFactory = BikeFactory{}
