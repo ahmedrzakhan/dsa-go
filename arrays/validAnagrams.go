@@ -48,7 +48,7 @@ func isAnagram(s string, t string) bool {
 	return true
 }
 
-func main() {
+func mainIsAnagram() {
 	s1, t1 := "anagram", "nagaram"
 	s2, t2 := "rat", "car"
 

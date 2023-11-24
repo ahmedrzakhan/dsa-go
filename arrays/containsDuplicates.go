@@ -46,7 +46,7 @@ func containsDuplicates(nums []int) bool {
 	return false
 }
 
-func main() {
+func mainContainsDuplicates() {
 	fmt.Println(containsDuplicates([]int{1, 2, 3, 1}))
 }
 
