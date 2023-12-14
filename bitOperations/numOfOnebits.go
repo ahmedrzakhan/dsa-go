@@ -33,6 +33,10 @@ The input must be a binary string of length 32.
 Follow up: If this function is called many times, how would you optimize it?
 */
 
+/**
+can also mod with 2 and right shift and counter
+*/
+
 // TC - O(N), SC - O(1)
 func hammingWeight(n uint32) int {
 	count := 0
