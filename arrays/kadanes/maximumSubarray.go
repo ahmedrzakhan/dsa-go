@@ -34,7 +34,7 @@ Follow up: If you have figured out the O(n) solution, try coding another solutio
 divide and conquer approach, which is more subtle.
 */
 
-func max(a int, b int) int {
+func maxss(a int, b int) int {
 	if a > b {
 		return a
 	}
@@ -46,7 +46,7 @@ func maxSubArray(arr []int) int {
 	sum, maxSum := 0, 0
 	for _, ele := range arr {
 		sum = sum + ele
-		maxSum = max(sum, maxSum)
+		maxSum = maxss(sum, maxSum)
 		if sum < 0 {
 			sum = 0
 		}
