@@ -32,6 +32,12 @@ s consists of parentheses only '()[]{}'.
 
 */
 
+/**
+If number of items odd in total return unbalanced immediately at the start
+
+Ask interviewer if anything other than these six characters
+*/
+
 func includes(arr []string, val string) bool {
 	N := len(arr)
 	for i := 0; i < N; i++ {
