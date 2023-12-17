@@ -29,7 +29,7 @@ Follow up: A linked list can be reversed either iteratively or recursively. Coul
 */
 
 // ListNode is a node in a singly-linked list.
-type ListNode struct {
+type ListNodeR struct {
 	Val  int
 	Next *ListNode
 }
