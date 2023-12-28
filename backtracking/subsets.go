@@ -15,7 +15,6 @@ func subsetsWithoutDuplicates(nums []int) [][]int {
 
 func helper(i int, nums []int, curSet *[]int, subsets *[][]int) {
 	if i >= len(nums) {
-		// *subsets = append(*subsets, append([]int(nil), *curSet...))
 		*subsets = append(*subsets, append([]int(nil), *curSet...))
 		return
 	}
