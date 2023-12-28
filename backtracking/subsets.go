@@ -5,6 +5,8 @@ import (
 	"sort"
 )
 
+// TC - O(N*2^N),SC - O(N)
+
 // Generate all subsets of the given set of numbers without duplicates
 func subsetsWithoutDuplicates(nums []int) [][]int {
 	var subsets [][]int
