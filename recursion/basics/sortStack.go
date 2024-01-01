@@ -17,12 +17,12 @@ func NewStack() Stack {
 }
 
 // Push adds an element to the top of the stack
-func (s *Stack) Push(v int) {
+func (s *Stack) Pushd(v int) {
 	s.Data = append(s.Data, v)
 }
 
 // Pop removes and returns the top element of the stack
-func (s *Stack) Pop() int {
+func (s *Stack) Popd() int {
 	if len(s.Data) == 0 {
 		panic("pop from empty stack")
 	}
@@ -38,7 +38,7 @@ func (s *Stack) Peek() int {
 }
 
 // Size returns the size of the stack
-func (s *Stack) Size() int {
+func (s *Stack) Sized() int {
 	return len(s.Data)
 }
 
