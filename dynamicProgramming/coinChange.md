@@ -59,6 +59,7 @@ In our example (i = 6, coin = 4), 1 + changes[2] calculates the total number of 
 what if we sorted the array and added check to coins at a number, would it improve TC?
 
 Dynamic Programming Nature: The essence of the solution lies in its dynamic programming approach, where the algorithm iteratively builds up the minimum number of coins needed for each amount from 1 to the target amount. This process requires considering all possible combinations of coins, regardless of their order.
+ALSO not expected to have 1000's of coins
 
 Sorting Overhead: Sorting the coins array introduces an additional computational overhead. The best sorting algorithms have a time complexity of O(N log N), where N is the number of coins. This preprocessing step would add to the overall time complexity without reducing the complexity of the main algorithm, which remains O(amount \* N).
 
