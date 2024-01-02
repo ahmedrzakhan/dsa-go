@@ -45,6 +45,7 @@ It does this by considering each coin denomination for each amount and updating 
 number of coins needed. This is a bottom-up dynamic programming approach, where solutions to smaller
 sub-problems (minimum coins for smaller amounts) are used to solve larger problems (minimum coins
 for the total amount).
+ASK: interviewer if number of coins are infinite
 */
 
 // TC - O(amount * N), SC - O(amount)
