@@ -24,6 +24,7 @@ Constraints:
 1 <= n <= 8
 */
 
+// TODO: get TC and SC
 func generateParentheses(N int) []string {
 	var subsets []string
 	helperGen(0, 0, N, "", &subsets)
