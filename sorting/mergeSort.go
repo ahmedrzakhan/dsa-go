@@ -28,6 +28,16 @@ Constraints:
 -5 * 104 <= nums[i] <= 5 * 104
 */
 
+/**
+NOTE: For preserving relative order of elements it should be
+leftArr[i] <= rightArr[j]
+since merge sort is a stable sorting algorithm
+also
+result = append(result, leftArr[i:]...)
+result = append(result, rightArr[j:]...)
+first left than right
+*/
+
 // merge merges two sorted slices into a single sorted slice.
 func merge(leftArr, rightArr []int) []int {
 	result := make([]int, 0, len(leftArr)+len(rightArr))
@@ -35,7 +45,7 @@ func merge(leftArr, rightArr []int) []int {
 	i, j := 0, 0
 
 	for i < len(leftArr) && j < len(rightArr) {
-		if leftArr[i] < rightArr[j] {
+		if leftArr[i] <= rightArr[j] {
 			result = append(result, leftArr[i])
 			i++
 		} else {
