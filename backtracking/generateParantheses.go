@@ -24,7 +24,7 @@ Constraints:
 1 <= n <= 8
 */
 
-// TODO: get TC and SC
+// TC - O(2^N) SC - O(N)
 func generateParentheses(N int) []string {
 	var subsets []string
 	helperGen(0, 0, N, "", &subsets)

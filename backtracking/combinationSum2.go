@@ -42,7 +42,7 @@ Constraints:
 */
 
 // TODO: get TC and SC
-// TC - O(N*2^N), SC - O(N * K)
+// TC - O(2^N), SC - O(N)
 func combinationSum2(arr []int, target int) [][]int {
 	sort.Ints(arr)
 	curSet := make([]int, 0)
