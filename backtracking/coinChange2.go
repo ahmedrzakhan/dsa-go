@@ -68,7 +68,6 @@ func change2DP(amount int, coins []int) int {
 	return dp[amount]
 }
 
-// TODO: get TC and SC
 // TC - O(2^N), SC - O(N)
 func helperChange2(idx int, arr []int, target int, curSum int, curSet *[]int, count *int) {
 	if curSum == target {

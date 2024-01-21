@@ -42,7 +42,6 @@ func combinationSum(arr []int, target int) [][]int {
 	return subsets
 }
 
-// TODO: get TC and SC
 // TC - O(2^N+M), SC - O(N * M)
 func helperComb(idx int, arr []int, target int, curSum int, curSet *[]int, subsets *[][]int) {
 	if curSum == target {

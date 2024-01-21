@@ -41,7 +41,6 @@ Constraints:
 1 <= target <= 30
 */
 
-// TODO: get TC and SC
 // TC - O(2^N), SC - O(N)
 func combinationSum2(arr []int, target int) [][]int {
 	sort.Ints(arr)
