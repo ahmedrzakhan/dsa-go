@@ -40,6 +40,7 @@ func BuildAdjList() map[string][]string {
 }
 
 // TODO: iterative approach using stack
+// TC - O(V+E), SC - O(V)
 // Count paths (backtracking)
 func DFS(node, target string, adjList map[string][]string, visited map[string]bool) int {
 	if node == target {
@@ -59,6 +60,7 @@ func DFS(node, target string, adjList map[string][]string, visited map[string]bo
 	return count
 }
 
+// TC - O(V+E), SC - O(V)
 // Shortest path from node to target
 func BFS(node, target string, adjList map[string][]string) int {
 	length := 0
