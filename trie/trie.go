@@ -8,7 +8,7 @@ type TrieNode struct {
 }
 
 func NewTrieNode() *TrieNode {
-	return &TrieNode{children: make(map[rune]*TrieNode)}
+	return &TrieNode{children: make(map[rune]*TrieNode), isWord: false}
 }
 
 type Trie struct {

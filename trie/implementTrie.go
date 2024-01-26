@@ -56,8 +56,10 @@ func NewTrieIm() *Trie {
 }
 
 func NewTrieNodeIm() *TrieNode {
-	return &TrieNode{children: make(map[rune]*TrieNode)}
+	return &TrieNode{children: make(map[rune]*TrieNode), isWord: false}
 }
+
+// isWord is assgined as false by default in golang
 
 func Constructor() Trie {
 	return Trie{
