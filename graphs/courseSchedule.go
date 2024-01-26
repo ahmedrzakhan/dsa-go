@@ -37,15 +37,15 @@ All the pairs prerequisites[i] are unique.
 
 // TC - O(V+E), SC - O(V+E)
 func canFinish(numCourses int, prerequisites [][]int) bool {
-	graph := make(map[int][]int)
+	adjList := make(map[int][]int)
 	exploring := make(map[int]struct{})
 
 	for _, pre := range prerequisites {
-		graph[pre[1]] = append(graph[pre[1]], pre[0])
+		adjList[pre[1]] = append(adjList[pre[1]], pre[0])
 	}
 
 	for i := 0; i < numCourses; i++ {
-		if !dfsCS(i, graph, exploring) {
+		if !dfsCS(i, adjList, exploring) {
 			return false
 		}
 	}
@@ -53,25 +53,25 @@ func canFinish(numCourses int, prerequisites [][]int) bool {
 	return true
 }
 
-func dfsCS(course int, graph map[int][]int, exploring map[int]struct{}) bool {
+func dfsCS(course int, adjList map[int][]int, exploring map[int]struct{}) bool {
 	if _, ok := exploring[course]; ok {
 		return false
 	}
 
-	if len(graph[course]) == 0 {
+	if len(adjList[course]) == 0 {
 		return true
 	}
 
 	exploring[course] = struct{}{}
 
-	for _, pre := range graph[course] {
-		if !dfsCS(pre, graph, exploring) {
+	for _, pre := range adjList[course] {
+		if !dfsCS(pre, adjList, exploring) {
 			return false
 		}
 	}
 
 	delete(exploring, course)
-	graph[course] = []int{}
+	adjList[course] = []int{}
 
 	return true
 }
