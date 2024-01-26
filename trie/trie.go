@@ -19,35 +19,38 @@ func NewTrie() *Trie {
 	return &Trie{root: NewTrieNode()}
 }
 
-func (t *Trie) Insert(word string) {
+// TC - O(N),SC - O(N)
+func (t *Trie) ImInsert(word string) {
 	curr := t.root
-	for _, c := range word {
-		if _, ok := curr.children[c]; !ok {
-			curr.children[c] = NewTrieNode()
+	for _, ch := range word {
+		if _, ok := curr.children[ch]; !ok {
+			curr.children[ch] = NewTrieNode()
 		}
-		curr = curr.children[c]
+		curr = curr.children[ch]
 	}
 	curr.isWord = true
 }
 
-func (t *Trie) Search(word string) bool {
+// TC - O(N),SC - O(1)
+func (t *Trie) ImSearch(word string) bool {
 	curr := t.root
-	for _, c := range word {
-		if _, ok := curr.children[c]; !ok {
+	for _, ch := range word {
+		if _, ok := curr.children[ch]; !ok {
 			return false
 		}
-		curr = curr.children[c]
+		curr = curr.children[ch]
 	}
 	return curr.isWord
 }
 
-func (t *Trie) StartsWith(prefix string) bool {
+// TC - O(N),SC - O(1)
+func (t *Trie) ImStartsWith(prefix string) bool {
 	curr := t.root
-	for _, c := range prefix {
-		if _, ok := curr.children[c]; !ok {
+	for _, ch := range prefix {
+		if _, ok := curr.children[ch]; !ok {
 			return false
 		}
-		curr = curr.children[c]
+		curr = curr.children[ch]
 	}
 	return true
 }
