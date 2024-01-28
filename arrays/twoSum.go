@@ -32,21 +32,29 @@ Constraints:
 Only one valid answer exists.
 */
 
-/*
-TC - O(N)
-SC - O(N)
+/**
+variation - return true if there exists a pair in arr whose sum = target
+arr := []int{1, 3, 2, 4, 5}
+target := 6
+
+brute force: try out all possibilities, TC - O(N^2), SC - O(1)
+optimized: sort and use two pointer, TC - O(NLogN), SC - O(1)
+more optimized: maintain a hashmap with index as key and element as value,
+iterate over array if target - curElem exists in hashmap, return, TC - O(N), SC - O(N)
 */
 
+// TC - O(N), SC - O(N)
 func twoSum(nums []int, target int) []int {
-	m := make(map[int]int)
-	for idx, num := range nums {
+	idxMap := make(map[int]int)
 
-		if val, found := m[target-num]; found {
-			return []int{val, idx}
+	for i, num := range nums {
+		if idx, found := idxMap[target-num]; found {
+			return []int{idx, i}
 		}
 
-		m[num] = idx
+		idxMap[num] = i
 	}
+
 	return nil
 }
 
