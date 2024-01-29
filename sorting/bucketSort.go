@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// TC - O(N), SC - O(1)
 func bucketSort(arr []int) []int {
 	// Assuming arr only contains 0, 1 or 2
 	counts := [3]int{0, 0, 0}
