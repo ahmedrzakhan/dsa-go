@@ -38,14 +38,15 @@ All the pairs prerequisites[i] are unique.
 // TC - O(V+E), SC - O(V+E)
 func canFinish(numCourses int, prerequisites [][]int) bool {
 	adjList := make(map[int][]int)
-	exploring := make(map[int]struct{})
+	visited := make(map[int]bool, numCourses)  // Tracks visited courses
+	visiting := make(map[int]bool, numCourses) // Tracks courses currently being visited (for cycle detection)
 
 	for _, pre := range prerequisites {
 		adjList[pre[1]] = append(adjList[pre[1]], pre[0])
 	}
 
 	for i := 0; i < numCourses; i++ {
-		if !dfsCS(i, adjList, exploring) {
+		if !dfsCS(i, visiting, visited, adjList) {
 			return false
 		}
 	}
@@ -53,25 +54,23 @@ func canFinish(numCourses int, prerequisites [][]int) bool {
 	return true
 }
 
-func dfsCS(course int, adjList map[int][]int, exploring map[int]struct{}) bool {
-	if _, ok := exploring[course]; ok {
+func dfsCS(course int, visiting, visited map[int]bool, adjList map[int][]int) bool {
+	if visiting[course] { // Cycle detected
 		return false
 	}
-
-	if len(adjList[course]) == 0 {
+	if visited[course] { // Already processed
 		return true
 	}
 
-	exploring[course] = struct{}{}
-
+	visiting[course] = true
 	for _, pre := range adjList[course] {
-		if !dfsCS(pre, adjList, exploring) {
-			return false
+		if !dfsCS(pre, visiting, visited, adjList) {
+			return false // Cycle detected in deeper recursion
 		}
 	}
 
-	delete(exploring, course)
-	adjList[course] = []int{}
+	visiting[course] = false // Backtrack
+	visited[course] = true   // Mark as processed
 
 	return true
 }
