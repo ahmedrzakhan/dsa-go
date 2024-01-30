@@ -36,9 +36,14 @@ There are no repeated edges.
 The given graph is connected.
 */
 
-/*
-Brute force: create adjaceny list and dfs, like done in detecting cycels in graph
+/**
+Brute force
+1. create adjacency list
+2. iterate over edges remove one edge at a time and check if cycle exists or not (like we do in
+detecting cycles in graph)
+3. return last edge that had no cycle
 */
+
 type UnionFindRC struct {
 	parent, rank []int
 }
