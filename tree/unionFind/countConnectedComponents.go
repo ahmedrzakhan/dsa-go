@@ -48,6 +48,7 @@ func countComponents(n int, edges [][]int) int {
 	componentCount := 0
 	for i := 0; i < n; i++ {
 		if uf.Find(i) == i {
+			// if node is its parent
 			componentCount++
 		}
 	}
