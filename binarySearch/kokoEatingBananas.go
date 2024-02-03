@@ -62,8 +62,8 @@ func maxInArray(arr []int) int {
 	return max
 }
 
-// brute : O(max(P(P)))
-// TC - O(Log(max(P)P), S - O(1)
+// brute : O(max(N(N)))
+// TC - O(Log(max(N)N), S - O(1)
 func minEatingSpeed(piles []int, h int) int {
 	L, H, res := 1, maxInArray(piles), 1
 	for L <= H {
