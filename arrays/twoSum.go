@@ -48,7 +48,7 @@ func twoSum(nums []int, target int) []int {
 	idxMap := make(map[int]int)
 
 	for i, num := range nums {
-		if idx, found := idxMap[target-num]; found {
+		if idx, exists := idxMap[target-num]; exists {
 			return []int{idx, i}
 		}
 
