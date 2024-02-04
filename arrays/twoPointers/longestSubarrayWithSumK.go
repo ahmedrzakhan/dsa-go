@@ -41,12 +41,15 @@ func lenOfLongSubarr(arr []int, N int, K int) int {
 	cumSum := 0 // Initialize sum of elements
 	maxLen := 0 // Initialize result
 
+	sumMap[0] = -1
 	// Traverse through the given array
 	for i := 0; i < N; i++ {
 		// Add the current element to the sum
 		cumSum += arr[i]
 
 		// When sub-array starts from index '0'
+		// OR
+		// insert 0 as value -1 in hashmap
 		if cumSum == K {
 			maxLen = i + 1
 		}
