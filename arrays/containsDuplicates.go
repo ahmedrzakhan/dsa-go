@@ -3,6 +3,8 @@ package main
 import "fmt"
 
 /**
+217. Contains Duplicate
+
 Given an integer array nums, return true if any value appears at least twice in the array,
 and return false if every element is distinct.
 
@@ -25,23 +27,20 @@ Constraints:
 -109 <= nums[i] <= 109
 */
 
-/*
-TC - O(N)
-SC - O(N)
-*/
+// TC - O(N), SC - O(N)
 func containsDuplicates(nums []int) bool {
 	if len(nums) <= 1 {
 		return false
 	}
 
-	seenNums := make(map[int]struct{})
+	seen := make(map[int]struct{})
 
 	for _, num := range nums {
-		if _, ok := seenNums[num]; ok {
+		if _, ok := seen[num]; ok {
 			return true
 		}
 
-		seenNums[num] = struct{}{}
+		seen[num] = struct{}{}
 	}
 	return false
 }
