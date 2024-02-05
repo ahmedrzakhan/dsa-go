@@ -66,7 +66,7 @@ func (hs *MyHashSetDS) contains(key int) bool {
 }
 
 func mainHS() {
-	hashSet := Constructor()
+	hashSet := ConstructorDS()
 	hashSet.add(1)
 	hashSet.add(1)
 	hashSet.add(1)
