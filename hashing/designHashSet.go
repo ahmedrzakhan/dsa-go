@@ -3,6 +3,8 @@ package main
 import "fmt"
 
 /**
+706. Design HashMap
+
 Design a HashSet without using any built-in hash table libraries.
 
 Implement MyHashSet class:
