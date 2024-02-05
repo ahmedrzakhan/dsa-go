@@ -4,7 +4,7 @@ import "fmt"
 
 const setSize = 10000 // Assuming a set size of 10^4
 
-type node struct {
+type nodeHS struct {
 	key  int
 	next *node
 }
@@ -13,7 +13,7 @@ type MyHashSet struct {
 	set []*node // Using a slice of pointers to node
 }
 
-func Constructor() MyHashSet {
+func ConstructorHS() MyHashSet {
 	return MyHashSet{set: make([]*node, setSize)}
 }
 
@@ -66,7 +66,7 @@ func (hs *MyHashSet) contains(key int) bool {
 }
 
 func main() {
-	hashSet := Constructor()
+	hashSet := ConstructorHS()
 	hashSet.add(1)
 	hashSet.add(1)
 	hashSet.add(1)
