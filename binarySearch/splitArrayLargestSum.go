@@ -78,6 +78,45 @@ func min(a, b int) int {
 	return b
 }
 
+// TC - O(NLog(S)), SC - O(1) S is sum
+func splitArrayOp(arr []int, K int) int {
+	L, R := 0, 0
+	for _, num := range arr {
+		R += num // R is sum
+		if L < num {
+			L = num // L is largest value in array
+		}
+	}
+
+	result := R
+	for L <= R {
+		mid := L + (R-L)/2
+		if isValid(arr, K, mid) {
+			result = mid
+			R = mid - 1
+		} else {
+			L = mid + 1
+		}
+	}
+
+	return result
+}
+
+func isValid(arr []int, K, maxSum int) bool {
+	count, sum := 1, 0
+	for _, val := range arr {
+		sum += val
+		if sum > maxSum {
+			count++
+			sum = val
+			if count > K {
+				return false
+			}
+		}
+	}
+	return true
+}
+
 func mainSA() {
 	arr := []int{7, 2, 5, 10, 8}
 	K := 3
