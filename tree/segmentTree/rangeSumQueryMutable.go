@@ -41,8 +41,8 @@ At most 3 * 104 calls will be made to update and sumRange.
 
 type SegmentTreeRS struct {
 	sum   int
-	left  *SegmentTree
-	right *SegmentTree
+	left  *SegmentTreeRS
+	right *SegmentTreeRS
 	L, R  int
 }
 
@@ -63,15 +63,15 @@ func BuildRS(nums []int, L, R int) *SegmentTree {
 	return root
 }
 
-func Constructor(nums []int) NumArray {
+func ConstructorRS(nums []int) NumArray {
 	return NumArray{root: Build(nums, 0, len(nums)-1)}
 }
 
-func (st *NumArray) Update(index int, val int) {
-	st.root.Update(index, val)
+func (st *NumArray) UpdateRS(index int, val int) {
+	st.root.UpdateRS(index, val)
 }
 
-func (st *SegmentTree) Update(index, val int) {
+func (st *SegmentTree) UpdateRS(index, val int) {
 	if st.L == st.R {
 		st.sum = val
 		return
@@ -86,11 +86,11 @@ func (st *SegmentTree) Update(index, val int) {
 	st.sum = st.left.sum + st.right.sum
 }
 
-func (st *NumArray) SumRange(left int, right int) int {
+func (st *NumArray) SumRangeRS(left int, right int) int {
 	return st.root.RangeQuery(left, right)
 }
 
-func (st *SegmentTree) RangeQuery(L, R int) int {
+func (st *SegmentTreeRS) RangeQuery(L, R int) int {
 	if L == st.L && R == st.R {
 		return st.sum
 	}
@@ -107,9 +107,9 @@ func (st *SegmentTree) RangeQuery(L, R int) int {
 
 func mainRS() {
 	nums := []int{1, 3, 5, 7, 9, 11}
-	numArray := Constructor(nums)
-	fmt.Println("Initial sum in range [1, 3]:", numArray.SumRange(1, 3)) // Output: 15
+	numArray := ConstructorRS(nums)
+	fmt.Println("Initial sum in range [1, 3]:", numArray.SumRangeRS(1, 3)) // Output: 15
 
-	numArray.Update(1, 10)                                               // Update index 1 to value 10
-	fmt.Println("Updated sum in range [1, 3]:", numArray.SumRange(1, 3)) // Output: 22
+	numArray.UpdateRS(1, 10)                                               // Update index 1 to value 10
+	fmt.Println("Updated sum in range [1, 3]:", numArray.SumRangeRS(1, 3)) // Output: 22
 }
