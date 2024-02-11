@@ -38,32 +38,32 @@ Expected Auxiliary Space: O(N).
 func lenOfLongSubarr(arr []int, N int, K int) int {
 	// Map to store the earliest sum occurrences
 	sumMap := make(map[int]int)
-	cumSum := 0 // Initialize sum of elements
-	maxLen := 0 // Initialize result
+	currSum := 0 // Initialize sum of elements
+	maxLen := 0  // Initialize result
 
 	sumMap[0] = -1
 	// Traverse through the given array
 	for i := 0; i < N; i++ {
 		// Add the current element to the sum
-		cumSum += arr[i]
+		currSum += arr[i]
 
 		// When sub-array starts from index '0'
 		// OR
 		// insert 0 as value -1 in hashmap
-		if cumSum == K {
+		if currSum == K {
 			maxLen = i + 1
 		}
 
-		// Check if 'cumSum-K' is present in sumMap or not
-		if prevI, exists := sumMap[cumSum-K]; exists {
+		// Check if 'currSum-K' is present in sumMap or not
+		if prevI, exists := sumMap[currSum-K]; exists {
 			// Update maxLength
 			maxLen = max(maxLen, i-prevI)
 		}
 
-		// Add cumSum to sumMap, only if it is not already present
+		// Add currSum to sumMap, only if it is not already present
 		// This is to ensure we consider the first occurrence for a particular sum
-		if _, exists := sumMap[cumSum]; !exists {
-			sumMap[cumSum] = i
+		if _, exists := sumMap[currSum]; !exists {
+			sumMap[currSum] = i
 		}
 	}
 
