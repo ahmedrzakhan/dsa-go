@@ -73,17 +73,17 @@ func lenOfLongSubarr(arr []int, N int, K int) int {
 // TC - O(N), SC - O(1)
 // NOTE: works only for positive integers
 func lenOfLongSubarrPos(arr []int, target int) int {
-	N, sum, left, maxLength := len(arr), 0, 0, 0
+	N, sum, L, maxLength := len(arr), 0, 0, 0
 
-	for right := 0; right < N; right++ {
-		sum += arr[right]
+	for R := 0; R < N; R++ {
+		sum += arr[R]
 		for sum > target {
-			sum -= arr[left]
-			left++
+			sum -= arr[L]
+			L++
 		}
 
 		if sum == target {
-			maxLength = max(maxLength, right-left+1)
+			maxLength = max(maxLength, R-L+1)
 		}
 	}
 	return maxLength
