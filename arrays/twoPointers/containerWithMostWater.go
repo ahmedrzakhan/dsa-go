@@ -36,16 +36,16 @@ n == height.length
 // TC - O(N), SC - O(1)
 func maxArea(arr []int) int {
 	N := len(arr)
-	left, right := 0, N-1
+	L, R := 0, N-1
 	maxArea := 0
-	for left < right {
-		area := (right - left) * min(arr[left], arr[right])
+	for L < R {
+		area := (R - L) * min(arr[L], arr[R])
 		maxArea = max(area, maxArea)
 
-		if arr[left] < arr[right] {
-			left++
+		if arr[L] < arr[R] {
+			L++
 		} else {
-			right--
+			R--
 		}
 	}
 
