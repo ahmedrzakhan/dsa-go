@@ -55,12 +55,12 @@ func (h IntHeap) Len() int {
 }
 
 // Min-Heap, so Less means 'smaller than'
-func (h IntHeap) Less(i, j int) bool {
-	return h[i] < h[j]
+func (h *IntHeap) Less(i, j int) bool {
+	return (*h)[i] < (*h)[j]
 }
 
-func (h IntHeap) Swap(i, j int) {
-	h[i], h[j] = h[j], h[i]
+func (h *IntHeap) Swap(i, j int) {
+	(*h)[i], (*h)[j] = (*h)[j], (*h)[i]
 }
 
 // Push and Pop use pointer receivers because they modify the slice's length,
