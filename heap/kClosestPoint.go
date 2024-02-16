@@ -40,6 +40,7 @@ Constraints:
 Array Approach - TC O(N log N) due to full sorting
 Heap Approach - O(N log k) due to selective heap adjustments
 */
+// improvement: if you maintain a max heap can compare with top and remove (pop top elemeent)
 
 type Point struct {
 	X, Y int
