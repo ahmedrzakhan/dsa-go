@@ -38,19 +38,19 @@ func (h *MinHeap) PushTH(x interface{}) {
 
 type MaxHeap []int
 
-func (h *MaxHeap) Len() int {
+func (h *MaxHeap) LenTH() int {
 	return len(*h)
 }
 
-func (h *MaxHeap) Less(i, j int) bool {
+func (h *MaxHeap) LessTH(i, j int) bool {
 	return (*h)[i] > (*h)[j]
 }
 
-func (h *MaxHeap) Swap(i, j int) {
+func (h *MaxHeap) SwapTH(i, j int) {
 	(*h)[i], (*h)[j] = (*h)[j], (*h)[i]
 }
 
-func (h *MaxHeap) Pop() interface{} {
+func (h *MaxHeap) PopTH() interface{} {
 	old := *h
 	n := len(old)
 	x := old[n-1]
@@ -58,7 +58,7 @@ func (h *MaxHeap) Pop() interface{} {
 	return x
 }
 
-func (h *MaxHeap) Push(x interface{}) {
+func (h *MaxHeap) PushTH(x interface{}) {
 	*h = append(*h, x.(int))
 }
 
@@ -70,7 +70,7 @@ func ConstructorTH() MedianFinder {
 	return MedianFinder{minHeap, maxHeap}
 }
 
-func (mf *MedianFinder) AddNum(num int) {
+func (mf *MedianFinder) AddNumTH(num int) {
 	heap.Push(mf.maxHeap, num)
 	val := heap.Pop(mf.maxHeap).(int)
 	heap.Push(mf.minHeap, val)
@@ -82,7 +82,7 @@ func (mf *MedianFinder) AddNum(num int) {
 }
 
 // TC - O(NlogN), SC - O(N)
-func (mf *MedianFinder) FindMedian() float64 {
+func (mf *MedianFinder) FindMedianTH() float64 {
 	if mf.maxHeap.Len() > mf.minHeap.Len() {
 		return float64((*mf.maxHeap)[0])
 	} else if mf.maxHeap.Len() < mf.minHeap.Len() {
