@@ -36,23 +36,23 @@ brute force: sort and return arr len - k, TC - O(NLogN), SC - O(1)
 // MinHeap to store 'k' largest elements
 type MinHeap []int
 
-func (h *MinHeap) Len() int {
+func (h *MinHeap) LenKL() int {
 	return len(*h)
 }
 
-func (h *MinHeap) Less(i, j int) bool {
+func (h *MinHeap) LessKL(i, j int) bool {
 	return (*h)[i] < (*h)[j]
 }
 
-func (h *MinHeap) Swap(i, j int) {
+func (h *MinHeap) SwapKL(i, j int) {
 	(*h)[i], (*h)[j] = (*h)[j], (*h)[i]
 }
 
-func (h *MinHeap) Push(x interface{}) {
+func (h *MinHeap) PushKL(x interface{}) {
 	*h = append(*h, x.(int))
 }
 
-func (h *MinHeap) Pop() interface{} {
+func (h *MinHeap) PopKL() interface{} {
 	old := *h
 	n := len(old)
 	x := old[n-1]
