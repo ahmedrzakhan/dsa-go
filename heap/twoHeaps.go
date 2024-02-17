@@ -81,6 +81,7 @@ func (mf *MedianFinder) AddNum(num int) {
 	}
 }
 
+// TC - O(NlogN), SC - O(N)
 func (mf *MedianFinder) FindMedian() float64 {
 	if mf.maxHeap.Len() > mf.minHeap.Len() {
 		return float64((*mf.maxHeap)[0])
