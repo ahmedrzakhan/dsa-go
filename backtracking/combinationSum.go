@@ -35,15 +35,15 @@ Input: candidates = [2], target = 1
 Output: []
 */
 
-func combinationSum(arr []int, target int) [][]int {
+func combinationSum(A []int, target int) [][]int {
 	subsets := make([][]int, 0)
 	curSet := make([]int, 0)
-	helperComb(0, arr, target, 0, &curSet, &subsets)
+	helperComb(0, A, target, 0, &curSet, &subsets)
 	return subsets
 }
 
 // TC - O(2^N+M), SC - O(N * M)
-func helperComb(idx int, arr []int, target int, curSum int, curSet *[]int, subsets *[][]int) {
+func helperComb(idx int, A []int, target int, curSum int, curSet *[]int, subsets *[][]int) {
 	if curSum == target {
 		*subsets = append(*subsets, append([]int{}, *curSet...))
 		return
@@ -51,16 +51,16 @@ func helperComb(idx int, arr []int, target int, curSum int, curSet *[]int, subse
 	if curSum > target {
 		return
 	}
-	for i := idx; i < len(arr); i++ {
-		*curSet = append(*curSet, arr[i])
-		helperComb(i, arr, target, curSum+arr[i], curSet, subsets)
+	for i := idx; i < len(A); i++ {
+		*curSet = append(*curSet, A[i])
+		helperComb(i, A, target, curSum+A[i], curSet, subsets)
 		*curSet = (*curSet)[:len(*curSet)-1]
 	}
 }
 
 func mainCom() {
-	arr := []int{2, 3, 6, 7}
+	A := []int{2, 3, 6, 7}
 	target := 7
-	result := combinationSum(arr, target)
+	result := combinationSum(A, target)
 	fmt.Println("Combinations that add up to", target, "are:", result)
 }
