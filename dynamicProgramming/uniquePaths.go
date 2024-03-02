@@ -50,12 +50,28 @@ func helper(R, C int, count *int, ROWS, COLS int) {
 	}
 }
 
-// TODO: DP approach
 // TC - O(2^(R+C)), SC - O(R+C)
 func uniquePaths(ROWS, COLS int) int {
 	count := 0                       // Reset count for each calculation
 	helper(0, 0, &count, ROWS, COLS) // Start from the top-left
 	return count
+}
+
+// TC - O(R*C), SC - O(R)
+func uniquePathsDP(ROWS, COLS int) int {
+	prevRow := make([]int, COLS)
+
+	for R := ROWS - 1; R >= 0; R-- {
+		curRow := make([]int, COLS)
+		curRow[COLS-1] = 1 // Base case: Rightmost cell has 1 path
+
+		for C := COLS - 2; C >= 0; C-- {
+			curRow[C] = curRow[C+1] + prevRow[C]
+		}
+
+		prevRow = curRow
+	}
+	return prevRow[0]
 }
 
 func mainUP() {
