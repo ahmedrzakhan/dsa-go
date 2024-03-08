@@ -41,13 +41,13 @@ func kthSmallest(root *TreeNode, k int) int {
 }
 
 // inOrderTraversal performs the in-order traversal of the BST.
-func inOrderTraversal(node *TreeNode, count *int, k int) int {
-	if node == nil {
+func inOrderTraversal(curr *TreeNode, count *int, k int) int {
+	if curr == nil {
 		return -1
 	}
 
-	if node.Left != nil {
-		val := inOrderTraversal(node.Left, count, k)
+	if curr.Left != nil {
+		val := inOrderTraversal(curr.Left, count, k)
 		if *count == k {
 			return val
 		}
@@ -55,11 +55,11 @@ func inOrderTraversal(node *TreeNode, count *int, k int) int {
 
 	*count++
 	if *count == k {
-		return node.Val
+		return curr.Val
 	}
 
-	if node.Right != nil {
-		return inOrderTraversal(node.Right, count, k)
+	if curr.Right != nil {
+		return inOrderTraversal(curr.Right, count, k)
 	}
 
 	return -1
@@ -68,28 +68,28 @@ func inOrderTraversal(node *TreeNode, count *int, k int) int {
 // TC - (H+k), SC - O(H)
 func kthSmallestIt(root *TreeNode, k int) int {
 	stack := []*TreeNode{}
-	node := root
+	curr := root
 	count := 0
 
-	for node != nil || len(stack) > 0 {
+	for curr != nil || len(stack) > 0 {
 		// Push all left children onto the stack
-		for node != nil {
-			stack = append(stack, node)
-			node = node.Left
+		for curr != nil {
+			stack = append(stack, curr)
+			curr = curr.Left
 		}
 
 		// Process the node
-		node = stack[len(stack)-1]
+		curr = stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
 		count++
 
 		// If count is k, return the value
 		if count == k {
-			return node.Val
+			return curr.Val
 		}
 
 		// Move to the right child
-		node = node.Right
+		curr = curr.Right
 	}
 
 	// If k is out of bounds
