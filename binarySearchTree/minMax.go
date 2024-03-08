@@ -53,7 +53,7 @@ func findMaxRec(curr *TreeNode) *TreeNode {
 	}
 }
 
-func main() {
+func mainM() {
 	// Sample BST (Feel free to modify)
 	root := &TreeNode{Val: 10,
 		Left: &TreeNode{Val: 5,
