@@ -71,6 +71,7 @@ func helperChange2(idx int, arr []int, target int, curSum int, curSet *[]int, co
 }
 
 // memoization
+// TC - O(2^N), SC - O(2^N)
 func dfs(i, acc, amount int, coins []int, cache map[[2]int]int) int {
 	if acc == amount {
 		return 1
@@ -93,6 +94,7 @@ func changeMemoization(amount int, coins []int) int {
 }
 
 // DP 2d array
+// TC - O(N * amount), SC - O(N * amount)
 func changeDP(amount int, coins []int) int {
 	dp := make([][]int, amount+1)
 	for i := range dp {
@@ -107,10 +109,10 @@ func changeDP(amount int, coins []int) int {
 	// Dynamic programming to fill the dp table
 	for a := 1; a <= amount; a++ {
 		for i := len(coins) - 1; i >= 0; i-- {
-			// Number of combinations without using the current coin
+			// Exclude the current coin
 			dp[a][i] = dp[a][i+1]
 
-			// Number of combinations using the current coin
+			// Include the current coin
 			if a-coins[i] >= 0 {
 				dp[a][i] += dp[a-coins[i]][i]
 			}
@@ -120,22 +122,24 @@ func changeDP(amount int, coins []int) int {
 	return dp[amount][0]
 }
 
+// TODO
 // DP reduced space
+// TC - O(N * amount), SC -  O(amount)
 func change(amount int, coins []int) int {
 	dp := make([]int, amount+1)
 	dp[0] = 1
 
 	for _, coin := range coins {
-		nextDP := make([]int, amount+1)
-		nextDP[0] = 1
+		nextRow := make([]int, amount+1)
+		nextRow[0] = 1
 
 		for a := 1; a <= amount; a++ {
-			nextDP[a] = dp[a]
+			nextRow[a] = dp[a]
 			if a-coin >= 0 {
-				nextDP[a] += nextDP[a-coin]
+				nextRow[a] += nextRow[a-coin]
 			}
 		}
-		dp = nextDP
+		dp = nextRow
 	}
 
 	return dp[amount]
