@@ -69,13 +69,6 @@ func coinChange(coins []int, amount int) int {
 	return -1
 }
 
-func min(x, y int) int {
-	if x < y {
-		return x
-	}
-	return y
-}
-
 func mainCoin() {
 	// coins := []int{1, 2, 5}
 	coins := []int{2}
