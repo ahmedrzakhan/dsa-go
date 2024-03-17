@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /**
 515 · Paint House
@@ -32,6 +35,7 @@ Input: [[1,2,3],[1,4,6]]
 Output: 3
 */
 
+// TC - O(N) , SC - O(1)
 func minCost(cost [][]int) int {
 	N := len(cost)
 	DP := make([][]int, N)
@@ -55,10 +59,55 @@ func minCost(cost [][]int) int {
 	return min(DP[N-1][0], DP[N-1][1], DP[N-1][2])
 }
 
+// TC - O(N * K) , SC - O(1)
+func minCostK(cost [][]int) int {
+	N := len(cost)
+	K := len(cost[0]) // Number of paints
+
+	DP := make([][]int, N)
+
+	for i := range DP {
+		DP[i] = make([]int, K)
+	}
+
+	// Initialize the base case
+	for i := 0; i < K; i++ {
+		DP[0][i] = cost[0][i]
+	}
+
+	// Fill out the dp table
+	for i := 1; i < N; i++ {
+		for j := 0; j < K; j++ {
+			minPrev := math.MaxInt // Initialize to maximum possible value
+			for k := 0; k < K; k++ {
+				if k != j && DP[i-1][k] < minPrev {
+					minPrev = DP[i-1][k]
+				}
+			}
+			DP[i][j] = cost[i][j] + minPrev
+		}
+	}
+
+	// Find the minimum cost from the last row
+	minCost := math.MaxInt // Initialize to maximum possible value
+	for i := 0; i < K; i++ {
+		if DP[N-1][i] < minCost {
+			minCost = DP[N-1][i]
+		}
+	}
+	return minCost
+}
+
 func mainPh() {
 	costs := [][]int{{1, 4, 5}, {8, 2, 11}, {3, 5, 1}}
 	fmt.Println(minCost(costs)) // Output: 4
 
 	costs = [][]int{{17, 2, 17}, {16, 16, 5}, {14, 3, 19}}
 	fmt.Println("Minimum cost to paint houses:", minCost(costs)) // Output: 10
+
+	costs = [][]int{{1, 4, 5}, {8, 2, 11}, {3, 5, 1}}
+	fmt.Println(minCostK(costs)) // Output: 4
+
+	costs = [][]int{{17, 2, 17}, {16, 16, 5}, {14, 3, 19}}
+	fmt.Println("Minimum cost to paint houses:", minCostK(costs)) // Output: 10
 }
