@@ -37,6 +37,55 @@ Constraints:
 text1 and text2 consist of only lowercase English characters.
 */
 
+func bruteForceLCS(S1, S2 string, idx1, idx2 int) int {
+	if idx1 == len(S1) || idx2 == len(S2) {
+		return 0
+	}
+
+	if S1[idx1] == S2[idx2] {
+		return 1 + bruteForceLCS(S1, S2, idx1+1, idx2+1)
+	}
+
+	option1 := bruteForceLCS(S1, S2, idx1+1, idx2)
+	option2 := bruteForceLCS(S1, S2, idx1, idx2+1)
+
+	return max(option1, option2)
+}
+
+func memoizedLCS(S1, S2 string, idx1, idx2 int, memo [][]int) int {
+	if idx1 == len(S1) || idx2 == len(S2) {
+		return 0
+	}
+
+	if memo[idx1][idx2] != -1 { // Check if result is already calculated
+		return memo[idx1][idx2]
+	}
+
+	var result int
+	if S1[idx1] == S2[idx2] {
+		result = 1 + memoizedLCS(S1, S2, idx1+1, idx2+1, memo)
+	} else {
+		option1 := memoizedLCS(S1, S2, idx1+1, idx2, memo)
+		option2 := memoizedLCS(S1, S2, idx1, idx2+1, memo)
+		result = max(option1, option2)
+	}
+
+	memo[idx1][idx2] = result // Store the result
+	return result
+}
+
+func lcsM(S1, S2 string) int {
+	R, C := len(S1), len(S2)
+	memo := make([][]int, R+1)
+	for i := range memo {
+		memo[i] = make([]int, C+1)
+		for j := range memo[i] {
+			memo[i][j] = -1 // Initialize memoization array with -1
+		}
+	}
+	return memoizedLCS(S1, S2, 0, 0, memo)
+}
+
 // TC - O(R*C), SC - O(R*C)
 func longestCommonSubsequence(S1 string, S2 string) int {
 	DP := make([][]int, len(S1)+1)
