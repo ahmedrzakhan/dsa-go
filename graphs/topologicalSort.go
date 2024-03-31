@@ -5,6 +5,7 @@ import "fmt"
 // Graph representation using adjacency lists
 type GraphTS map[int][]int
 
+// TC - O(V+E), SC - O(V+E)
 func topologicalSort(edges [][]int, n int) []int {
 	adjList := make(GraphTS) // Initialize the graph
 
