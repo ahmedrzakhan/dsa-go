@@ -34,6 +34,7 @@ func (h *EdgeHeap) Pop() interface{} {
 	return el
 }
 
+// TC - O(ELogV), SC - O(E)
 func minimumSpanningTree(edges [][]int, N int) ([][]int, int) {
 	adjList := make(map[int][]Edge) // Adjacency list representation
 
