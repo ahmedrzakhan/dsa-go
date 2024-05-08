@@ -47,6 +47,7 @@ func isPalindrome(s string) bool {
 	lengthOfStr := len(cleanedString)    // Get the length of the string
 
 	for i := 0; i < lengthOfStr/2; i++ {
+		// NOTE: len() - 1- i for checking palindrome
 		if cleanedString[i] != cleanedString[lengthOfStr-1-i] {
 			return false
 		}
