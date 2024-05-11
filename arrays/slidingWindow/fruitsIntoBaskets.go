@@ -72,7 +72,6 @@ func totalFruit(arr []int) int {
 		if maxCount < R-L+1 {
 			maxCount = R - L + 1
 		}
-
 	}
 
 	return maxCount
