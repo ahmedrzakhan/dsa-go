@@ -77,14 +77,6 @@ func pairSum(head *ListNode) int {
 	return maxSum
 }
 
-// max returns the larger of two integers.
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
 // createList creates a linked list from a slice of values and returns the head of the list.
 func createListd(vals []int) *ListNode {
 	if len(vals) == 0 {
