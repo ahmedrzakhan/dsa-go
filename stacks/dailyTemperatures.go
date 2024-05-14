@@ -33,15 +33,15 @@ check if next item is grater than current item using 2 for loops
 */
 
 // TC O(N), SC O(N)
-func dailyTemperatures(arr []int) []int {
-	N := len(arr)
+func dailyTemperatures(A []int) []int {
+	N := len(A)
 	res := make([]int, N) // Array to store the result
 	var stack []int       // Use a slice as a stack
 
 	// Iterate through the temperatures in reverse order
 	for i := N - 1; i >= 0; i-- {
 		// Pop from the stack until we find a warmer temperature or the stack is empty
-		for len(stack) > 0 && arr[i] >= arr[stack[len(stack)-1]] {
+		for len(stack) > 0 && A[i] >= A[stack[len(stack)-1]] {
 			stack = stack[:len(stack)-1] // Pop from the stack
 		}
 
