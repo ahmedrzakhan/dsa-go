@@ -65,12 +65,12 @@ func maxInArray(arr []int) int {
 // brute : O(max(N(N)))
 // TC - O(Log(max(N)N), S - O(1)
 func minEatingSpeed(piles []int, h int) int {
-	L, H, res := 1, maxInArray(piles), 1
-	for L <= H {
-		mid := (L + H) / 2
+	L, R, res := 1, maxInArray(piles), 1
+	for L <= R {
+		mid := (L + R) / 2
 		if canEat(piles, h, mid) {
 			res = mid
-			H = mid - 1
+			R = mid - 1
 		} else {
 			L = mid + 1
 		}
