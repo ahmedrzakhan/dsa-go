@@ -40,10 +40,10 @@ exact multiple of speed, the division rounds up. If banana is an exact multiple 
 adding speed- 1 doesn't change the outcome of the division after rounding down.
 */
 
-func canEat(piles []int, hours, speed int) bool {
+func canEat(A []int, hours, speed int) bool {
 	timeTaken := 0
-	for _, banana := range piles {
-		timeTaken += (banana + speed - 1) / speed
+	for _, item := range A {
+		timeTaken += (item + speed - 1) / speed
 		if timeTaken > hours {
 			return false
 		}
