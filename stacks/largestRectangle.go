@@ -30,7 +30,7 @@ func largestRectangleArea(A []int) int {
 	stack := []int{} // Stack to store indices of heights
 	maxArea := 0
 
-	// Add a sentinel 0 to handle the remaining bars in the stack at the end
+	// NOTE: Add a sentinel 0 to handle the remaining bars in the stack at the end
 	A = append(A, 0)
 
 	for idx, height := range A {
