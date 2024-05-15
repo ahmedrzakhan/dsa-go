@@ -52,20 +52,6 @@ func maxArea(arr []int) int {
 	return maxArea
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
 func mainCW() {
 	arr := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
 	fmt.Println(maxArea(arr))
