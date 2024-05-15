@@ -19,6 +19,12 @@ brute force:
 4. DP approach possible for this
 */
 
+/**
+Note: In the context of the "Minimum Number of Removals to Make Array Increasing" problem,
+"replaced with another integer" means that you can swap the current element with any other
+integer, regardless of whether that integer already exists in the array.
+*/
+
 // TC - O(NLogN), SC - O(N)
 func distance(A []int) int {
 	N := len(A)
