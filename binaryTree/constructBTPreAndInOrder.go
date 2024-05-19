@@ -56,8 +56,8 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 }
 
 // find returns the index of the given value in the slice.
-func findIndex(slice []int, value int) int {
-	for i, v := range slice {
+func findIndex(A []int, value int) int {
+	for i, v := range A {
 		if v == value {
 			return i
 		}
