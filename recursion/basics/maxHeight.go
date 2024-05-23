@@ -33,13 +33,6 @@ func maxDepthF(root *TreeNode) int {
 	// return max(maxDepth(root.Left), maxDepth(root.Right))
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
 func mainMaxHeight() {
 	// Example Tree
 	//        3
