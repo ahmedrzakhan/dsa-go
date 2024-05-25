@@ -69,13 +69,6 @@ func maxAreaOfIsland(grid [][]int) int {
 	return maxCount
 }
 
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
-}
-
 func mainMaxArea() {
 	grid := [][]int{
 		{0, 0, 1, 0, 0},
