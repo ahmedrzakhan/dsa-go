@@ -5,6 +5,11 @@ import (
 	"sort"
 )
 
+/**
+find next smallest combination
+2187615 -> 251678
+*/
+
 // Check Descending Order: If the digits are in descending order, return "Not Possible".
 // Find Swap Point: Iterate from right to left until you find a digit digits[i] smaller than digits[i + 1].
 // Find Replacement: Find the smallest digit digits[j] on the right of digits[i] where digits[j] > digits[i].
